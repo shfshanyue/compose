@@ -1,0 +1,3 @@
+!verdaccio/storage/
+verdaccio/storage/*
+!verdaccio/storage/.gitkeep
