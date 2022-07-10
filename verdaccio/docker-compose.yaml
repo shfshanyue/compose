@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  verdaccio:
+    image: verdaccio/verdaccio:nightly-master
+    ports:
+      - '4873:4873'
+    volumes:
+      - './storage:/verdaccio/storage'
+      - './conf:/verdaccio/conf'
+    labels:
+      - traefik.http.routers.whoami.rule=Host(`npm.shanyue.tech`)
+      - traefik.http.routers.whoami.tls=true
+      - traefik.http.routers.whoami.tls.certresolver=le
+    # environments:
+    #   TMUX
+    
+networks:
+  default:
+    external:
+      name: traefik_default
