@@ -6,6 +6,7 @@ services:
     ports:
       - '4873:4873'
     volumes:
+      # 需要注意为以下目录进行 chown 为 verdaccio 用户
       - './storage:/verdaccio/storage'
       - './conf:/verdaccio/conf'
     labels:

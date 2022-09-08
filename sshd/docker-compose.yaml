@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  sshd-alpine:
+    image: panubo/sshd
+    restart: always
+    ports:
+      - 2000:22
+    environment:
+      - SSH_ENABLE_ROOT_PASSWORD_AUTH=true
+      - SSH_ENABLE_PASSWORD_AUTH=true
+      - SSH_ENABLE_ROOT=true
+    # volumes:
+    #   - ./entrypoint.d/:/etc/entrypoint.d/:rw
+  sshd-ubuntu:
+    build:
+      context: .
+      dockerfile: ubuntu.Dockerfile
+    restart: always
+    ports:
+      - 2200:22
+
+# 使用已存在的 traefik 的 network
+# networks:
+#   default:
+#     external:
+#       name: traefik_default
+

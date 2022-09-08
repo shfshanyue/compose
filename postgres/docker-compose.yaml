@@ -8,6 +8,8 @@ services:
       - 5432:5432
     volumes:
       - ./pg-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=password
     labels:
       - "traefik.http.routers.db.rule=Host(`db.shanyue.local`)"
 
